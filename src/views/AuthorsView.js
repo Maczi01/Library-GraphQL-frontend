@@ -4,7 +4,7 @@ import Author from "../components/Author";
 import {Flex, CircularProgress} from '@chakra-ui/core'
 
 const ALL_AUTHORS_QUERY = gql`
-    query AllAuthors {
+    query GetAllAuthors {
         authors {
             name
             photo {
