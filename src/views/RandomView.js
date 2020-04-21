@@ -42,8 +42,8 @@ const RandomView = () => {
 
     return (
         <>
-            <Flex w="80%" wrap="wrap" mt="40px">
-                <Box p={5} shadow="md" borderWidth="1px" flex="1" height="300px" bg="teal.300"
+            <Flex direction={["column", null, null, null, "row"]} w="80%" wrap="wrap" mt="40px">
+                <Box p={5} shadow="md" borderWidth="1px" flex="1" height="300px" width="30vw" bg="teal.300"
                      rounded="lg"
                      mx="25px">
                     <Box ml="3">
@@ -56,7 +56,7 @@ const RandomView = () => {
                 </Box>
 
 
-                <Box p={5} shadow="md" borderWidth="1px" flex="1" width="400px" height="300px" bg="teal.300"
+                <Box p={5} shadow="md" borderWidth="1px" flex="1"  height="300px"width="30vw" bg="teal.300"
                      rounded="lg"
                      mx="25px">
                     <Box ml="3">
@@ -68,7 +68,7 @@ const RandomView = () => {
                     </Box>
                 </Box>
 
-                <Box p={5} shadow="md" borderWidth="1px" flex="1" width="400px" height="300px" bg="teal.300"
+                <Box p={5} shadow="md" borderWidth="1px" flex="1" width="30vw" height="300px" bg="teal.300"
                      rounded="lg"
                      mx="25px">
                     <Box ml="3">
