@@ -8,11 +8,13 @@ const ALL_USERS_QUERY = gql`
     query GetAllUsers {
         users {
             name
+            email
             avatar {
                 image{
                     url
                     
-                }
+                }   
+                color
             }
         }
     }
@@ -28,8 +30,8 @@ const UsersView = () => {
     }
     const {users} = data;
     return (
-        <Flex wrap="wrap" justify="space-around" my="20px">
-            {users.map(user => <UserDetails key={user.name} user={user}/>)}
+        <Flex direction="column" w="80%" wrap="wrap" mt="40px">
+            {users.map(user => <User key={user.name} user={user}/>)}
         </Flex>
     )
 }

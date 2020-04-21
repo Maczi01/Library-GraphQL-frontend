@@ -2,6 +2,7 @@ import React from 'react'
 import {gql, useQuery} from "@apollo/client";
 import Book from "../components/Book";
 import {CircularProgress, Flex} from '@chakra-ui/core'
+import Heading from "@chakra-ui/core/dist/Heading";
 
 const ALL_USERS_BOOKS = gql`
     query GetAllBooks{
@@ -28,7 +29,7 @@ const BooksView = () => {
         const {books} = data;
         return (
             <>
-                <h1>Books View</h1>
+                <Heading m="4%">Books View</Heading>
                 <Flex wrap="wrap" justify="space-around" my="20px">
                     {books.map(book => <Book key={book.title} book={book}/>)}
                 </Flex>

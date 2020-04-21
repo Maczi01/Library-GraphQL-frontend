@@ -10,6 +10,9 @@ const ALL_AUTHORS_QUERY = gql`
             photo {
                 url
             }
+            books{
+                title
+            }
         }
     }
 `;
