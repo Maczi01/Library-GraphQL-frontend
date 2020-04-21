@@ -2,6 +2,7 @@ import React from "react";
 import {gql, useQuery} from "@apollo/client";
 import {CircularProgress, Flex} from '@chakra-ui/core'
 import User from "../components/User";
+import UserDetails from "../components/UserDetails";
 
 const ALL_USERS_QUERY = gql`
     query GetAllUsers {
@@ -28,7 +29,7 @@ const UsersView = () => {
     const {users} = data;
     return (
         <Flex wrap="wrap" justify="space-around" my="20px">
-            {users.map(user => <User key={user.name} user={user}/>)}
+            {users.map(user => <UserDetails key={user.name} user={user}/>)}
         </Flex>
     )
 }
