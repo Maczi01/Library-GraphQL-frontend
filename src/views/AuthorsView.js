@@ -20,7 +20,7 @@ const ALL_AUTHORS_QUERY = gql`
 const AuthorsView = () => {
     const {loading, error, data} = useQuery(ALL_AUTHORS_QUERY);
     if (loading) {
-        return <CircularProgress isIndeterminate color="green"></CircularProgress>;
+        return <CircularProgress isIndeterminate color="green" my="20%"></CircularProgress>;
     }
     if (error) {
         return <p>Could not load authors...</p>;

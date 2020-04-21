@@ -23,7 +23,7 @@ const ALL_USERS_QUERY = gql`
 const UsersView = () => {
     const {loading, error, data} = useQuery(ALL_USERS_QUERY);
     if (loading) {
-        return <CircularProgress isIndeterminate color="green"></CircularProgress>;
+        return <CircularProgress isIndeterminate color="green" my="20%"></CircularProgress>;
     }
     if (error) {
         return <p>Could not load users...</p>;

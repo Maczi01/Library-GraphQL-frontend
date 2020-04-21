@@ -33,7 +33,7 @@ const RANDOM_DATA_QUERY = gql`
 const RandomView = () => {
     const {error, loading, data, refetch} = useQuery(RANDOM_DATA_QUERY)
     if (loading) {
-        return <CircularProgress isIndeterminate color="green"></CircularProgress>;
+        return <CircularProgress isIndeterminate color="green" my="20%"></CircularProgress>;
     }
     if (error) {
         return <p>Could not load random data...</p>;
@@ -42,8 +42,7 @@ const RandomView = () => {
 
     return (
         <>
-            <Flex direction={["row","column", "row", "column"]} w="80%" wrap="wrap" mt="40px">
-
+            <Flex w="80%" wrap="wrap" mt="40px">
                 <Box p={5} shadow="md" borderWidth="1px" flex="1" height="300px" bg="teal.300"
                      rounded="lg"
                      mx="25px">
