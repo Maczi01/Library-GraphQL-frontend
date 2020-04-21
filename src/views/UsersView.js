@@ -1,7 +1,6 @@
 import React from "react";
 import {gql, useQuery} from "@apollo/client";
-import Author from "../components/Author";
-import {Flex, CircularProgress} from '@chakra-ui/core'
+import {CircularProgress, Flex} from '@chakra-ui/core'
 import User from "../components/User";
 
 const ALL_USERS_QUERY = gql`

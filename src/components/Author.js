@@ -1,5 +1,6 @@
 import React from 'react'
-import {Flex, Avatar, Box, Text, Badge , List, ListItem} from '@chakra-ui/core'
+import {Avatar, Box, List, ListItem, Text} from '@chakra-ui/core'
+
 const Author = ({author}) => (
     <Box p={5} shadow="md" borderWidth="1px" flex="1" width="400px" height="300px" bg="teal.300" rounded="lg" mx="25px">
             <Avatar align="center" size="xl" src={author.photo.url} ml="4%" mb="4%"/>

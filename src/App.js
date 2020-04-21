@@ -1,10 +1,11 @@
 import React from "react";
 import AuthorsView from "./views/AuthorsView";
-import {Heading, Flex, ThemeProvider, Link, Divider} from '@chakra-ui/core'
-import {Routes, Route, Link as RouterLink} from "react-router-dom";
+import {Divider, Flex, Heading, Link} from '@chakra-ui/core'
+import {Link as RouterLink, Route, Routes} from "react-router-dom";
 import UsersView from "./views/UsersView";
 import Box from "@chakra-ui/core/dist/Box";
 import BooksView from "./views/BooksView";
+import RandomView from "./views/RandomView";
 
 export default function App() {
     return (
@@ -18,22 +19,26 @@ export default function App() {
                         <Box as="span">Authors</Box>
                     </Link>
                     <Divider orientation="vertical"/>
-                    <Link to="/" as={RouterLink}>
+                    <Link to="/users" as={RouterLink}>
                         <Box as="span">Users</Box>
                     </Link>
                     <Divider orientation="vertical"/>
                     <Link to="/books" as={RouterLink}>
                         <Box as="span">Books</Box>
                     </Link>
+                    <Divider orientation="vertical"/>
+                    <Link to="/random" as={RouterLink}>
+                        <Box as="span">Random</Box>
+                    </Link>
                 </Flex>
             </Flex>
 
             <Routes>
-
-                <Route path="/" element={<UsersView/>}/>
+                <Route path="/" element={<BooksView/>}/>
                 <Route path="authors/" element={<AuthorsView/>}/>
                 <Route path="books/" element={<BooksView/>}/>
-
+                <Route path="users/" element={<UsersView/>}/>
+                <Route path="random/" element={<RandomView/>}/>
             </Routes>
 
 
