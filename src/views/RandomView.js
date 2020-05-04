@@ -41,7 +41,7 @@ const RandomView = () => {
     const {randomBook, randomAuthor, randomUser} = data;
 
     return (
-        <>
+        <Box  width="75%">
             <Flex direction={["column", null, null, null, "row"]} w="80%" wrap="wrap" mt="40px">
                 <Box p={5} shadow="md" borderWidth="1px" flex="1" height="300px" width="30vw" bg="teal.300"
                      rounded="lg"
@@ -83,7 +83,7 @@ const RandomView = () => {
             </Flex>
             <Button variantColor="teal" variant="solid" my="15px" p="10px" onClick={() => refetch()}> Get some random
                 data</Button>
-        </>
+        </Box>
     )
 
 }

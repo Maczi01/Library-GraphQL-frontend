@@ -11,7 +11,7 @@ const User = ({user}) => (
           my="5px"
           justify="space-between"
           align="center"
-          background="#81E6D9"
+          background="#d1d1e9"
           rounded="lg"
           mx="30px">
         <Avatar

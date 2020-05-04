@@ -27,7 +27,7 @@ const AuthorsView = () => {
     }
     const {authors} = data;
     return (
-        <Flex wrap="wrap" justify="space-around" my="20px">
+        <Flex wrap="wrap" justify="space-around" my="20px" width="75%">
             {authors.map(author => <Author key={author.name} author={author}/>)}
         </Flex>
     )

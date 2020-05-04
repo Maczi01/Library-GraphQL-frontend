@@ -30,7 +30,7 @@ const UsersView = () => {
     }
     const {users} = data;
     return (
-        <Flex direction="column" w="80%" wrap="wrap" mt="40px">
+        <Flex direction="column"  width="75%" wrap="wrap" mt="40px">
             {users.map(user => <User key={user.name} user={user}/>)}
         </Flex>
     )
