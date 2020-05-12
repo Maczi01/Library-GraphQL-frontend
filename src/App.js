@@ -15,7 +15,7 @@ export default function App() {
         <>
             <CSSReset/>
             <Flex direction="column" align="center" justify="space-between" width="full" height="100px"
-                  backgroundColor="#6246ea " mx="auto" py="2%">
+                  backgroundColor="#ffd803" mx="auto" py="2%">
                 <Header/>
 
                 <Routes>
