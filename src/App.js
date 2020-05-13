@@ -25,7 +25,7 @@ export default function App() {
                     <Route path="/" element={<BooksView/>}/>
                     <Route path="authors/" element={<AuthorsView/>}/>
                     {/*<Route path="books/" element={<BooksView/>}/>*/}
-                    <Route path="books/:id" element={<BookDetailsView/>}/>
+                    <Route path="books/:bookId" element={<BookDetailsView />} />
                     <Route path="users/" element={<UsersView/>}/>
                     <Route path="random/" element={<RandomView/>}/>
                     <Route path="admin/anything/:anyId" element={<AnythingDetailsView/>}/>

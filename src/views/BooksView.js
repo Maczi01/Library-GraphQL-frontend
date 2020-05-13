@@ -23,7 +23,7 @@ const ALL_USERS_BOOKS = gql`
 `;
 
 const BooksView = () => {
-        const {error, loading, data} = useQuery(ALL_USERS_BOOKS)
+        const {loading, error, data} = useQuery(ALL_USERS_BOOKS)
         if (loading) {
             return <CircularProgress isIndeterminate color="green" my="20%"></CircularProgress>;
         }
