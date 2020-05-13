@@ -24,7 +24,7 @@ const AuthorDetails = ({author}) => {
             </Heading>
             {author.books.map(book => (
                 <Link to={`/books/${book.id}`} key={book.id} w="100%">
-                    <Book {...book} author={author}/>
+                    <p>{book.title} </p>
                 </Link>
             ))}
         </Flex>

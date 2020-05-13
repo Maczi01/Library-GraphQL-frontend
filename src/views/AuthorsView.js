@@ -2,10 +2,14 @@ import React from "react";
 import {gql, useQuery} from "@apollo/client";
 import Author from "../components/Author";
 import {Flex, CircularProgress} from '@chakra-ui/core'
+import Link from "../components/Link";
+import Book from "../components/Book";
+import Grid from "@chakra-ui/core/dist/Grid";
 
 const ALL_AUTHORS_QUERY = gql`
     query GetAllAuthors {
         authors {
+            id
             name
             photo {
                 url
@@ -28,10 +32,13 @@ const AuthorsView = () => {
     const {authors} = data;
     return (
         <Flex wrap="wrap" justify="space-around" my="20px" width="75%">
-            {authors.map(author => <Author key={author.name} author={author}/>)}
+            {authors.map(author =>
+                <Link key={author.id} to={`/author/${author.id}`}>
+                    <Author author={author}/>
+                </Link>
+            )}
         </Flex>
     )
-}
-
+};
 
 export default AuthorsView;

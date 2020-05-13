@@ -12,6 +12,8 @@ import CSSReset from "@chakra-ui/core/dist/CSSReset";
 import AnythingDetailsView from "./views/AnythingDetailsView";
 import EverythingView from "./views/EverythingView";
 import BookDetailsView from "./views/BookDetailsView";
+import UserDetailsView from "./views/UserDetailsView";
+import AuthorDetailsView from "./views/AuthorDetailsView";
 
 export default function App() {
     return (
@@ -23,10 +25,11 @@ export default function App() {
 
                 <Routes>
                     <Route path="/" element={<BooksView/>}/>
-                    <Route path="authors/" element={<AuthorsView/>}/>
-                    {/*<Route path="books/" element={<BooksView/>}/>*/}
                     <Route path="books/:bookId" element={<BookDetailsView />} />
+                    <Route path="authors/" element={<AuthorsView/>}/>
+                    <Route path="author/:authorId" element={<AuthorDetailsView/>}/>
                     <Route path="users/" element={<UsersView/>}/>
+                    <Route path="user/:userId" element={<UserDetailsView/>}/>
                     <Route path="random/" element={<RandomView/>}/>
                     <Route path="admin/anything/:anyId" element={<AnythingDetailsView/>}/>
                     <Route path="admin/everything" element={<EverythingView/>}/>

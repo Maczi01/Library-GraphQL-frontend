@@ -26,10 +26,6 @@ const Header = () => (
                 <Box as="span">Users</Box>
             </Button>
             <Divider orientation="vertical"/>
-            <Button to="/books" as={RouterLink} color="black" variantColor="#3da9fc" variant="solid">
-                <Box as="span">Books</Box>
-            </Button>
-            <Divider orientation="vertical"/>
             <Button to="/random" as={RouterLink} color="black" variantColor="#3da9fc" variant="solid">
                 <Box as="span">Settings</Box>
             </Button>
