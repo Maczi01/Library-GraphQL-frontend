@@ -3,7 +3,7 @@ import {gql, useQuery} from "@apollo/client";
 import Author from "../components/Author";
 import {Flex, CircularProgress} from '@chakra-ui/core'
 import Link from "../components/Link";
-import Book from "../components/Book";
+import Book, {BOOK_PARTS_FRAGMENT} from "../components/Book";
 import Grid from "@chakra-ui/core/dist/Grid";
 
 const ALL_AUTHORS_QUERY = gql`
@@ -15,10 +15,11 @@ const ALL_AUTHORS_QUERY = gql`
                 url
             }
             books{
-                title
+                ...bookParts
             }
         }
     }
+    ${BOOK_PARTS_FRAGMENT}
 `;
 
 const AuthorsView = () => {
@@ -33,7 +34,7 @@ const AuthorsView = () => {
     return (
         <Flex wrap="wrap" justify="space-around" my="20px" width="75%">
             {authors.map(author =>
-                <Link key={author.id} to={`/author/${author.id}`}>
+                <Link key={author.id} to={`/authors/${author.id}`}>
                     <Author author={author}/>
                 </Link>
             )}

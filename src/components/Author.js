@@ -1,6 +1,9 @@
 import React from 'react'
 import {Avatar, Box, Flex, List, ListItem, Text} from '@chakra-ui/core'
-import Book from "./Book";
+import Book, {BOOK_PARTS_FRAGMENT} from "./Book";
+import {gql} from "@apollo/client";
+
+
 
 const Author = ({author}) => (
     <Box p={5} shadow="md" borderWidth="1px" flex="1" width="500px" bg="teal.300" rounded="lg" mx="25px">

@@ -10,7 +10,7 @@ const GRAPHQL_ENDPOINT = "http://localhost:4000/";
 // const GRAPHQL_ENDPOINT = "https://examples.devmastery.pl/library-ids/graphql";
 
 const cache = new InMemoryCache({
-    addTypename: false,
+    addTypename: true,
     resultCaching: false
 });
 const client = new ApolloClient({

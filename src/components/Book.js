@@ -5,10 +5,22 @@ import Heading from "@chakra-ui/core/dist/Heading";
 import Image from "@chakra-ui/core/dist/Image";
 import Flex from "@chakra-ui/core/dist/Flex";
 import Badge from "@chakra-ui/core/dist/Badge";
+import {gql, useQuery} from "@apollo/client";
+
+export const BOOK_PARTS_FRAGMENT = gql`
+   fragment bookParts on Book{
+        id
+        title
+        cover{
+            url
+        }
+        author{
+            name
+        }
+    }
+`;
 
 const Book = ({book}) => (
-
-
     <Box
         mt="10"
         w="300px"

@@ -1,25 +1,22 @@
 import React from 'react'
 import {gql, useQuery} from "@apollo/client";
-import Book from "../components/Book";
+import Book, {BOOK_PARTS_FRAGMENT} from "../components/Book";
 import {CircularProgress, Flex} from '@chakra-ui/core'
 import Heading from "@chakra-ui/core/dist/Heading";
 import Box from "@chakra-ui/core/dist/Box";
 import Grid from "@chakra-ui/core/dist/Grid";
 import Link from "../components/Link";
 
+
+
+
 const ALL_USERS_BOOKS = gql`
     query GetAllBooks{
         books{
-            id
-            title
-            cover{
-                url
-            }
-            author{
-                name
-            }
+            ...bookParts
         }
     }
+    ${BOOK_PARTS_FRAGMENT}
 `;
 
 const BooksView = () => {
