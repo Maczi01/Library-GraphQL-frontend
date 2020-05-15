@@ -3,8 +3,8 @@ import {Flex, Heading, Image, Box} from "@chakra-ui/core";
 import Link from "./Link";
 import {gql} from "@apollo/client";
 
-export const BOOK_DETAILS_FIELDS_FRAGMENT = gql`
-    fragment bookDetailsFields on Book {
+export const BOOK_DETAILS_PARTS_FRAGMENT = gql`
+    fragment bookParts on Book {
         id
         title
         description

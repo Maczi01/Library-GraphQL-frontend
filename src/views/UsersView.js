@@ -3,22 +3,18 @@ import {gql, useQuery} from "@apollo/client";
 import {CircularProgress, Flex} from '@chakra-ui/core'
 import User from "../components/User";
 import Link from "../components/Link";
+import {USER_DETAILS_PARTS_FRAGMENT} from "../components/UserDetails";
+
+
+
 
 const ALL_USERS_QUERY = gql`
     query GetAllUsers {
         users {
-            id
-            name
-            email
-            info
-            avatar {
-                image{
-                    url
-                }
-                color
-            }
+            ...userParts
         }
     }
+    ${USER_DETAILS_PARTS_FRAGMENT}
 `;
 
 const UsersView = () => {

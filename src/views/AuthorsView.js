@@ -5,21 +5,15 @@ import {Flex, CircularProgress} from '@chakra-ui/core'
 import Link from "../components/Link";
 import Book, {BOOK_PARTS_FRAGMENT} from "../components/Book";
 import Grid from "@chakra-ui/core/dist/Grid";
+import {AUTHOR_DETAILS_PARTS_FRAGMENT} from "../components/AuthorDetails";
 
 const ALL_AUTHORS_QUERY = gql`
     query GetAllAuthors {
         authors {
-            id
-            name
-            photo {
-                url
-            }
-            books{
-                ...bookParts
-            }
+            ...authorParts
         }
     }
-    ${BOOK_PARTS_FRAGMENT}
+    ${AUTHOR_DETAILS_PARTS_FRAGMENT}
 `;
 
 const AuthorsView = () => {

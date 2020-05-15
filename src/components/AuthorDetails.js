@@ -4,7 +4,7 @@ import Link from "./Link";
 import Book, {BOOK_PARTS_FRAGMENT} from "./Book";
 import {gql} from "@apollo/client";
 
-export const AUTHOR_PARTS_FRAGMENT = gql`
+export const AUTHOR_DETAILS_PARTS_FRAGMENT = gql`
     fragment authorParts on Author{
         id
         name
@@ -18,8 +18,6 @@ export const AUTHOR_PARTS_FRAGMENT = gql`
     }
     ${BOOK_PARTS_FRAGMENT}
 `
-
-
 
 const AuthorDetails = ({author}) => {
     return (

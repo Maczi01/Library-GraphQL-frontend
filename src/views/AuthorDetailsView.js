@@ -1,17 +1,16 @@
 import React from "react";
 import {Box, CircularProgress} from "@chakra-ui/core";
 import {gql, useQuery} from "@apollo/client";
-import AuthorDetails, {AUTHOR_PARTS_FRAGMENT} from "../components/AuthorDetails";
+import AuthorDetails, {AUTHOR_DETAILS_PARTS_FRAGMENT} from "../components/AuthorDetails";
 import {useParams} from "react-router";
-import {BOOK_PARTS_FRAGMENT} from "../components/Book";
 
 const GET_AUTHOR_QUERY = gql`
     query GetBook($authorId: ID!) {
         author(id: $authorId) {
-            ...authorParts 
+            ...authorParts
         }
     }
-    ${AUTHOR_PARTS_FRAGMENT}
+    ${AUTHOR_DETAILS_PARTS_FRAGMENT}
 `;
 const AuthorDetailsView = () => {
 

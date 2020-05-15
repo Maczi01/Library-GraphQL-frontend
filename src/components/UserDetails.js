@@ -6,6 +6,22 @@ import Text from "@chakra-ui/core/dist/Text";
 import Badge from "@chakra-ui/core/dist/Badge";
 import Image from "@chakra-ui/core/dist/Image";
 import Heading from "@chakra-ui/core/dist/Heading";
+import {gql} from "@apollo/client";
+
+export const USER_DETAILS_PARTS_FRAGMENT = gql`
+    fragment userParts on User {
+        id
+        name
+        email
+        info
+        avatar {
+            image{
+                url
+            }
+            color
+        }
+    }
+`
 
 const UserDetails = ({ user }) => {
     return (
