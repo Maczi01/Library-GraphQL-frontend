@@ -1,10 +1,10 @@
 import React from "react";
 import {gql, useQuery} from "@apollo/client";
 import Author from "../components/Author";
-import {Flex, CircularProgress} from '@chakra-ui/core'
+import {Flex, CircularProgress, Grid} from '@chakra-ui/core'
 import Link from "../components/Link";
 import Book, {BOOK_PARTS_FRAGMENT} from "../components/Book";
-import Grid from "@chakra-ui/core/dist/Grid";
+// import Grid from "@chakra-ui/core/dist/Grid";
 import {AUTHOR_DETAILS_PARTS_FRAGMENT} from "../components/AuthorDetails";
 
 const ALL_AUTHORS_QUERY = gql`

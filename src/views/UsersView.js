@@ -29,7 +29,7 @@ const UsersView = () => {
     return (
         <Flex direction="column" width="75%" wrap="wrap" mt="40px">
             {users.map(user =>
-                <Link key={user.id} to={`/user/${user.id}`}>
+                <Link key={user.id} to={`/users/${user.id}`}>
                     <User user={user}/>
                 </Link>
             )}
