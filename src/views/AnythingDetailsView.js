@@ -2,16 +2,16 @@ import React from "react";
 import {gql, useQuery} from "@apollo/client";
 import {Box, Heading} from "@chakra-ui/core";
 import {useParams} from "react-router";
-import AnythingDetails from "../components/AnythingDetails";
+import AnythingDetails, {ANYTHING_DETAILS_FIELDS_FRAGMENT} from "../components/AnythingDetails";
 
 const GET_ANYTHING_QUERY = gql`
     query GetAnything($anyId: ID!) {
         anything(id: $anyId) {
-            __typename
+            ...anythingDetailsFields
         }
     }
+    ${ANYTHING_DETAILS_FIELDS_FRAGMENT}
 `;
-
 const AnythingDetailsView = () => {
     const {anyId} = useParams();
     const {loading, error, data} = useQuery(GET_ANYTHING_QUERY, {
@@ -21,7 +21,7 @@ const AnythingDetailsView = () => {
         return <p>Loading...</p>;
     }
     if (error) {
-        return <p>Could not load record</p>;
+        return <p>Could not load an</p>;
     }
 
     const {anything} = data;

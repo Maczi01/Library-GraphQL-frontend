@@ -4,7 +4,7 @@ import Link from "./Link";
 import {gql} from "@apollo/client";
 
 export const BOOK_DETAILS_PARTS_FRAGMENT = gql`
-    fragment bookParts on Book {
+    fragment bookDetailsParts on Book {
         id
         title
         description

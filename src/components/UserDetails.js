@@ -1,12 +1,6 @@
 import React from "react";
-import Flex from "@chakra-ui/core/dist/Flex";
-import Avatar from "@chakra-ui/core/dist/Avatar";
-import Box from "@chakra-ui/core/dist/Box";
-import Text from "@chakra-ui/core/dist/Text";
-import Badge from "@chakra-ui/core/dist/Badge";
-import Image from "@chakra-ui/core/dist/Image";
-import Heading from "@chakra-ui/core/dist/Heading";
-import {gql} from "@apollo/client";
+import { Flex, Heading, Avatar, Box } from "@chakra-ui/core";
+import { gql } from "@apollo/client";
 
 export const USER_DETAILS_PARTS_FRAGMENT = gql`
     fragment userParts on User {
@@ -15,13 +9,13 @@ export const USER_DETAILS_PARTS_FRAGMENT = gql`
         email
         info
         avatar {
-            image{
+            image {
                 url
             }
             color
         }
     }
-`
+`;
 
 const UserDetails = ({ user }) => {
     return (
@@ -39,7 +33,6 @@ const UserDetails = ({ user }) => {
             <Box as="article">{user.info}</Box>
         </Flex>
     );
-}
+};
 
-
-export default UserDetails
+export default UserDetails;

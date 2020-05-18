@@ -7,7 +7,7 @@ import {useParams} from "react-router";
 const GET_AUTHOR_QUERY = gql`
     query GetBook($authorId: ID!) {
         author(id: $authorId) {
-            ...authorParts
+            ...authorDetailsParts
         }
     }
     ${AUTHOR_DETAILS_PARTS_FRAGMENT}

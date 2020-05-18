@@ -8,7 +8,7 @@ import BookDetails, {BOOK_DETAILS_PARTS_FRAGMENT} from "../components/BookDetail
 const GET_BOOK_QUERY = gql`
     query GetBook($bookId: ID!) {
         book(id: $bookId) {
-            ...bookParts
+            ...bookDetailsParts
         }
     }
     ${BOOK_DETAILS_PARTS_FRAGMENT}
