@@ -5,6 +5,7 @@ import NormalizedAnything, {
     NORMALIZED_ANYTHING_PARTS_FRAGMENT,
     normalizeAnything
 } from "../components/NormalizedAnything";
+import SearchBox, {useSearchQuery} from "../components/SearchBox";
 
 const GET_EVERYTHING_QUERY = gql`
     query GetEverything {
@@ -16,6 +17,7 @@ const GET_EVERYTHING_QUERY = gql`
 `;
 
 const EverythingView = () => {
+
     const {loading, error, data} = useQuery(GET_EVERYTHING_QUERY);
     if (loading) {
         return <p>Loading...</p>;
