@@ -25,11 +25,21 @@ export default function App() {
 
                 <Routes>
                     <Route path="/" element={<BooksView/>}/>
+
                     <Route path="books/:bookId" element={<BookDetailsView/>}/>
+                    <Route path="books/search/:searchQuery" element={<BooksView/>}/>
+                    <Route path="books/search/" element={<BooksView/>}/>
+
                     <Route path="authors/" element={<AuthorsView/>}/>
                     <Route path="authors/:authorId" element={<AuthorDetailsView/>}/>
+                    <Route path="authors/search/:searchQuery" element={<AuthorsView/>}/>
+                    <Route path="authors/search/" element={<AuthorsView/>}/>
+
                     <Route path="users/" element={<UsersView/>}/>
                     <Route path="users/:userId" element={<UserDetailsView/>}/>
+                    <Route path="users/search/:searchQuery" element={<UsersView/>}/>
+                    <Route path="users/search/" element={<UsersView/>}/>
+
                     <Route path="random/" element={<RandomView/>}/>
                     <Route path="admin/anything/:anyId" element={<AnythingDetailsView/>}/>
                     <Route path="admin/everything" element={<EverythingView/>}/>
