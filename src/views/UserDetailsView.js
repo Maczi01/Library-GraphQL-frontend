@@ -1,10 +1,8 @@
 import React from "react";
-import {Box, CircularProgress, Flex} from "@chakra-ui/core";
+import {Box, CircularProgress} from "@chakra-ui/core";
 import {gql, useQuery} from "@apollo/client";
 import UserDetails from "../components/UserDetails";
 import {useParams} from "react-router";
-import BookDetails from "../components/BookDetails";
-
 
 export default function UserDetailsPage() {
 

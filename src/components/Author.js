@@ -1,9 +1,5 @@
 import React from 'react'
-import {Avatar, Box, Flex, List, ListItem, Text} from '@chakra-ui/core'
-import Book, {BOOK_PARTS_FRAGMENT} from "./Book";
-import {gql} from "@apollo/client";
-
-
+import {Avatar, Box, List, ListItem, Text} from '@chakra-ui/core'
 
 const Author = ({author}) => (
     <Box p={5} shadow="md" borderWidth="1px" flex="1" width="500px" bg="teal.300" rounded="lg" mx="25px">
@@ -12,7 +8,6 @@ const Author = ({author}) => (
             <Text fontWeight="bold">
                 {author.name}
             </Text>
-
             <List styleType="disc">
                 {author.books.map(book =>
                     <ListItem key={book.title}>{book.title}</ListItem>
@@ -23,11 +18,4 @@ const Author = ({author}) => (
     </Box>
 );
 
-export default Author
-
-
-//
-// <>
-// <h2>{author.name}</h2>
-// <img src={author.photo.url} alt={author.name}/>
-// </>
+export default Author;

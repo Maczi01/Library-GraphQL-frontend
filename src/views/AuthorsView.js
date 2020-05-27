@@ -1,13 +1,10 @@
 import React from "react";
 import {gql, useQuery} from "@apollo/client";
 import Author from "../components/Author";
-import {Flex, CircularProgress, Grid} from '@chakra-ui/core'
+import {CircularProgress, Flex} from '@chakra-ui/core'
 import Link from "../components/Link";
-import Book, {BOOK_PARTS_FRAGMENT} from "../components/Book";
-// import Grid from "@chakra-ui/core/dist/Grid";
 import {AUTHOR_DETAILS_PARTS_FRAGMENT} from "../components/AuthorDetails";
 import SearchBox, {useSearchQuery} from "../components/SearchBox";
-import Box from "@chakra-ui/core/dist/Box";
 
 const ALL_AUTHORS_QUERY = gql`
     query GetAllAuthors($searchQuery: String) {

@@ -1,12 +1,10 @@
 import React from "react";
 import AuthorsView from "./views/AuthorsView";
-import {Divider, Flex, Heading, Link} from '@chakra-ui/core'
-import {Link as RouterLink, Route, Routes} from "react-router-dom";
+import {Flex} from '@chakra-ui/core'
+import {Route, Routes} from "react-router-dom";
 import UsersView from "./views/UsersView";
-import Box from "@chakra-ui/core/dist/Box";
 import BooksView from "./views/BooksView";
 import RandomView from "./views/RandomView";
-import Button from "@chakra-ui/core/dist/Button";
 import Header from "./components/Header";
 import CSSReset from "@chakra-ui/core/dist/CSSReset";
 import AnythingDetailsView from "./views/AnythingDetailsView";

@@ -2,10 +2,9 @@ import React from "react";
 import {gql, useQuery} from "@apollo/client";
 import {Box, Heading} from "@chakra-ui/core";
 import NormalizedAnything, {
-    NORMALIZED_ANYTHING_PARTS_FRAGMENT,
-    normalizeAnything
+    normalizeAnything,
+    NORMALIZED_ANYTHING_PARTS_FRAGMENT
 } from "../components/NormalizedAnything";
-import SearchBox, {useSearchQuery} from "../components/SearchBox";
 
 const GET_EVERYTHING_QUERY = gql`
     query GetEverything {

@@ -1,16 +1,14 @@
 import React from 'react'
-
-import {Avatar, Box, Text} from '@chakra-ui/core'
+import {Box} from '@chakra-ui/core'
 import Heading from "@chakra-ui/core/dist/Heading";
 import Image from "@chakra-ui/core/dist/Image";
 import Flex from "@chakra-ui/core/dist/Flex";
-import Badge from "@chakra-ui/core/dist/Badge";
-import {gql, useQuery} from "@apollo/client";
+import {gql} from "@apollo/client";
 
 export const BOOK_PARTS_FRAGMENT = gql`
    fragment bookParts on Book{
         id
-        title
+        titleó
         cover{
             url
         }

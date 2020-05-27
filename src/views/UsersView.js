@@ -30,7 +30,7 @@ const UsersView = () => {
         return <p>Could not load users...</p>;
     }
     const {users} = data;
-    const anyUsers = users.length > 0 ? true : false;
+    const anyUsers = users.length > 0;
 
     return (
         <Flex direction="column" width="75%" wrap="wrap" mt="40px">

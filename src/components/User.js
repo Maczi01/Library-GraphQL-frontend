@@ -2,7 +2,6 @@ import React from "react";
 import { Avatar, Box, Text } from "@chakra-ui/core";
 import Flex from "@chakra-ui/core/dist/Flex";
 
-
 const User = ({ user }) => (
     <Flex
         p={5}
