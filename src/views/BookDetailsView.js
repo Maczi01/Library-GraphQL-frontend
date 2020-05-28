@@ -29,7 +29,6 @@ const BookDetailsView = () => {
         return <p>Could not load book "{bookId}"</p>;
     }
     const {book} = data;
-    console.log(book)
     return (
         <Box>
             <BookDetails book={book}/>
