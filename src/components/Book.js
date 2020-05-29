@@ -8,7 +8,7 @@ import {gql} from "@apollo/client";
 export const BOOK_PARTS_FRAGMENT = gql`
    fragment bookParts on Book{
         id
-        titleó
+        title
         cover{
             url
         }
