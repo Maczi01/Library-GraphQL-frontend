@@ -2,7 +2,7 @@
 
 ### An application used to borrow books between users.
 
-#####Frontend available on zeit now: [demo](https://library.maczi01.now.sh/)
+###Frontend available on zeit now: [demo](https://library.maczi01.now.sh/)
 
 Backend server on Heroku: https://nameless-tundra-75396.herokuapp.com/
 
