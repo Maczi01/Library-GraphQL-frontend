@@ -7,7 +7,7 @@
 
 Frontend available on zeit now: [demo](https://library.maczi01.now.sh/)
 
-![screenshot](https://github.com/Maczi01/Library-GraphQL-backend/blob/master/assets/Playground.png)
+![screenshot](https://github.com/Maczi01/Library-GraphQL-frontend/blob/master/src/assets/library.png)
 
 
 
