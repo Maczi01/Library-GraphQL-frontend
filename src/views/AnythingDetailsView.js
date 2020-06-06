@@ -27,7 +27,7 @@ const AnythingDetailsView = () => {
     const {anything} = data;
 
     return (
-        <Box w="100%" bg="red.100">
+        <Box bg="red.100" p="20px">
             <Heading textAlign="center" color="red.500">
                 Warning! Admin area!
             </Heading>

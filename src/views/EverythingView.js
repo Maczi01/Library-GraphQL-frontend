@@ -5,6 +5,7 @@ import NormalizedAnything, {
     normalizeAnything,
     NORMALIZED_ANYTHING_PARTS_FRAGMENT
 } from "../components/NormalizedAnything";
+import Link from "@chakra-ui/core/dist/Link";
 
 const GET_EVERYTHING_QUERY = gql`
     query GetEverything {
@@ -34,7 +35,12 @@ const EverythingView = () => {
                 Warning! Admin area!
             </Heading>
             {normalizedAnything.map(anything => (
+                <Link
+                    to={`/admin/anything/${anything.id}`}
+                    key={anything.id}
+                      >
                 <NormalizedAnything normalizedAnything={anything}/>
+                </Link>
             ))}
         </Box>
     );
