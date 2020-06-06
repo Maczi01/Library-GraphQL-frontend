@@ -1,28 +1,30 @@
 import React from "react";
 import {Box, CircularProgress} from "@chakra-ui/core";
 import {gql, useQuery} from "@apollo/client";
-import UserDetails from "../components/UserDetails";
+import UserDetails, {USER_DETAILS_PARTS_FRAGMENT} from "../components/UserDetails";
 import {useParams} from "react-router";
+import BookCopy, {BOOK_COPY_PARTS_FRAGMENT} from "../components/BookCopy";
+import Flex from "@chakra-ui/core/dist/Flex";
+import Heading from "@chakra-ui/core/dist/Heading";
+import {AVATAR_FIELDS_FRAGMENT} from "../components/Avatar";
 
 export default function UserDetailsPage() {
 
     const GET_USER_QUERY = gql`
         query GetUser($userId: ID!) {
             user(id: $userId) {
-                id
-                name
-                email
-                avatar {
-                    image{
-                        url
-                    }
-                    color
+                ...userParts
+                borrowedBookCopies {
+                    ...bookCopyParts
                 }
-                info
+                ownedBookCopies{
+                    ...bookCopyParts
+                }
             }
         }
+        ${USER_DETAILS_PARTS_FRAGMENT}
+        ${BOOK_COPY_PARTS_FRAGMENT}
     `;
-
 
     const {userId} = useParams();
     const {loading, error, data} = useQuery(GET_USER_QUERY, {
@@ -38,6 +40,30 @@ export default function UserDetailsPage() {
     return (
         <Box>
             <UserDetails user={user}/>
+
+            <Heading as="h3" size="lg" textAlign="center"> Owned books</Heading>
+            <Flex wrap="wrap" width="60vw">
+                {user.ownedBookCopies.map(bookCopy => (
+                    <BookCopy
+                        key={bookCopy.id}
+                        bookCopy={bookCopy}
+                        showBorrower
+                    />
+                ))}
+            </Flex>
+
+            <Heading as="h3" size="lg" textAlign="center"> Borrowed books </Heading>
+            <Flex wrap="wrap" width="60vw">
+                {user.borrowedBookCopies.map(bookCopy => (
+                    <BookCopy
+                        key={bookCopy.id}
+                        bookCopy={bookCopy}
+                        showOwner
+                        showActions
+                    />
+                ))}
+            </Flex>
+
         </Box>
     );
 }
