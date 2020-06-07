@@ -29,7 +29,8 @@ export default function BorrowButton({availableBookCopy}) {
         onError: error => {
             toast({
                 title: "Could not borrow the book",
-                description: "Book already borrowed by someone else",
+                // description: "Book already borrowed by someone else",
+                description: error.message,
                 status: "error",
                 duration: 1500,
                 position: "top",

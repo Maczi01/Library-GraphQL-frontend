@@ -16,7 +16,8 @@ const RETURN_BOOK_COPY_MUTATION = gql`
 
 export default function ReturnButton({borrowedBookCopy}) {
     const toast = useToast();
-    const [returnBook, { loading }] = useMutation(RETURN_BOOK_COPY_MUTATION, {
+    const [returnBook, {loading}] = useMutation(RETURN_BOOK_COPY_MUTATION, {
+        variables: { bookCopyId: borrowedBookCopy.id },
         onCompleted: () => {
             toast({
                 title: "Success",
@@ -30,7 +31,8 @@ export default function ReturnButton({borrowedBookCopy}) {
         onError: error => {
             toast({
                 title: "Could not return the book",
-                description: "You can't return this book, you aren't owner",
+                // description: "You can't return this book, you aren't owner",
+                description: error.message,
                 status: "error",
                 duration: 1500,
                 position: "top",
