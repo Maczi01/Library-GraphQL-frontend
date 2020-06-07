@@ -3,9 +3,10 @@ import {Box, CircularProgress} from "@chakra-ui/core";
 import {useParams} from "react-router";
 import {gql, useQuery} from "@apollo/client";
 import BookDetails, {BOOK_DETAILS_PARTS_FRAGMENT} from "../components/BookDetails";
-import BookCopy, {BOOK_COPY_PARTS_FRAGMENT} from "../components/BookCopy";
+import {BOOK_COPY_PARTS_FRAGMENT} from "../components/BookCopy/fragments";
 import Heading from "@chakra-ui/core/dist/Heading";
 import Flex from "@chakra-ui/core/dist/Flex";
+import BookCopy from "../components/BookCopy";
 
 const GET_BOOK_QUERY = gql`
     query GetBook($bookId: ID!) {

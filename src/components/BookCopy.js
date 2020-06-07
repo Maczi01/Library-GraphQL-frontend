@@ -1,36 +1,9 @@
 import React from "react";
-import { Image, Box, AspectRatioBox } from "@chakra-ui/core";
-import Avatar, { AVATAR_FIELDS_FRAGMENT } from "./Avatar";
+import {AspectRatioBox, Box, Image} from "@chakra-ui/core";
+import Avatar from "./Avatar";
 import Link from "./Link";
 // import BookCopyActions from "./BookCopy/BookCopyActions";
-import { gql } from "@apollo/client";
 import BookCopyActions from "./BookCopy/BookCopyActions";
-
-export const BOOK_COPY_PARTS_FRAGMENT = gql`
-    fragment bookCopyParts on BookCopy {
-        id
-        book {
-            cover {
-                url
-            }
-        }
-        owner {
-            id
-            name
-            avatar {
-                ...avatarFields
-            }
-        }
-        borrower {
-            id
-            name
-            avatar {
-                ...avatarFields
-            }
-        }
-    }
-    ${AVATAR_FIELDS_FRAGMENT}
-`;
 
 export default function BookCopy({
                                      bookCopy,
@@ -38,12 +11,12 @@ export default function BookCopy({
                                      showBorrower = false,
                                      showActions = false
                                  }) {
-    const { book, owner, borrower } = bookCopy;
+    const {book, owner, borrower} = bookCopy;
     return (
         <Box p={2}>
             <Box position="relative" p={2}>
                 <AspectRatioBox minW="120px" maxW="300px" ratio={317 / 475}>
-                    <Image src={book.cover.url} objectFit="cover" mr="3" />
+                    <Image src={book.cover.url} objectFit="cover" mr="3"/>
                 </AspectRatioBox>
                 {showOwner && (
                     <Link to={`/users/${owner.id}`}>
@@ -56,7 +29,6 @@ export default function BookCopy({
                         />
                     </Link>
                 )}
-
                 {showBorrower && borrower && (
                     <Link to={`/users/${borrower.id}`}>
                         <Avatar
@@ -69,7 +41,7 @@ export default function BookCopy({
                     </Link>
                 )}
             </Box>
-            {showActions && <BookCopyActions bookCopy={bookCopy} pt={3} />}
+            {showActions && <BookCopyActions bookCopy={bookCopy} pt={3}/>}
         </Box>
     );
 }

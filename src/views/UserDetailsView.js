@@ -3,10 +3,10 @@ import {Box, CircularProgress} from "@chakra-ui/core";
 import {gql, useQuery} from "@apollo/client";
 import UserDetails, {USER_DETAILS_PARTS_FRAGMENT} from "../components/UserDetails";
 import {useParams} from "react-router";
-import BookCopy, {BOOK_COPY_PARTS_FRAGMENT} from "../components/BookCopy";
+import BookCopy from "../components/BookCopy";
+import {BOOK_COPY_PARTS_FRAGMENT} from "../components/BookCopy/fragments";
 import Flex from "@chakra-ui/core/dist/Flex";
 import Heading from "@chakra-ui/core/dist/Heading";
-import {AVATAR_FIELDS_FRAGMENT} from "../components/Avatar";
 
 export default function UserDetailsPage() {
 
