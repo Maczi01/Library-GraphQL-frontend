@@ -15,7 +15,7 @@ const BORROW_RANDOM_BOOK_COPY_MUTATION = gql`
 
 export default function BorrowRandomButton() {
     const toast = useToast();
-    const [borrowBook, {loading}] = useMutation(BORROW_RANDOM_BOOK_COPY_MUTATION
+    const [borrowBookCopy, {loading}] = useMutation(BORROW_RANDOM_BOOK_COPY_MUTATION
         , {
             onCompleted: (book) => {
                 book.borrowRandomBook === null ?
@@ -37,6 +37,16 @@ export default function BorrowRandomButton() {
                         isClosable: false
                     })
             },
+            onError: error => {
+                toast({
+                    title: "Could not borrow the book",
+                    description: error.message,
+                    status: "error",
+                    duration: 1500,
+                    position: "top",
+                    isClosable: false
+                });
+            },
             refetchQueries: ({data}) => {
                 return data.borrowRandomBook ? [
                     {
@@ -47,7 +57,7 @@ export default function BorrowRandomButton() {
             }
         });
     return (
-        <Button mt="10px" variantColor="blue" variant="solid" disabled={loading} onClick={borrowBook}>
+        <Button mt="10px" variantColor="blue" variant="solid" disabled={loading} onClick={borrowBookCopy}>
             Borrow Random Book
         </Button>
     );

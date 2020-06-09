@@ -18,35 +18,54 @@ const RETURN_BOOK_COPY_MUTATION = gql`
 export default function ReturnButton({borrowedBookCopy}) {
     const toast = useToast();
     const [returnBook, {loading}] = useMutation(RETURN_BOOK_COPY_MUTATION, {
-        variables: { bookCopyId: borrowedBookCopy.id },
-        onCompleted: () => {
-            toast({
-                title: "Success",
-                description: "You've returned the book",
-                status: "success",
-                duration: 1500,
-                position: "top",
-                isClosable: false
-            });
-        },
-        onError: error => {
-            toast({
-                title: "Could not return the book",
-                // description: "You can't return this book, you aren't owner",
-                description: error.message,
-                status: "error",
-                duration: 1500,
-                position: "top",
-                isClosable: false
-            });
-        },
-        refetchQueries: [
-            {
-                query: GET_USER_QUERY,
-                variables: { userId: borrowedBookCopy.borrower.id }
+            variables: {bookCopyId: borrowedBookCopy.id},
+            onCompleted: () => {
+                toast({
+                    title: "Success",
+                    description: "You've returned the book",
+                    status: "success",
+                    duration: 1500,
+                    position: "top",
+                    isClosable: false
+                });
+            },
+            onError: error => {
+                toast({
+                    title: "Could not return the book",
+                    // description: "You can't return this book, you aren't owner",
+                    description: error.message,
+                    status: "error",
+                    duration: 1500,
+                    position: "top",
+                    isClosable: false
+                });
+            },
+            // refetchQueries: [
+            //     {
+            //         query: GET_USER_QUERY,
+            //         variables: { userId: borrowedBookCopy.borrower.id }
+            //     }
+            // ],
+            // update: (cache, { data: { returnBookCopy } }) => {
+            update: (cache, {data}) => {
+                const cachedData = cache.readQuery({
+                    query: GET_USER_QUERY,
+                    variables: {userId: borrowedBookCopy.borrower.id}
+                });
+                // console.log(borrowedBookCopy.borrower.id)
+                const newData = JSON.parse(JSON.stringify(cachedData));
+                // console.log(newData.user.borrowedBookCopies)
+                // console.log(newData.user.borrowedBookCopies.indexOf(borrowedBookCopy.id))
+                newData.user.borrowedBookCopies.filter(book => book.id !== data.borrowedBookCopy.id)
+                // console.log(newData)
+                cache.writeQuery({
+                    query: GET_USER_QUERY,
+                    variables: {userId: borrowedBookCopy.borrower.id},
+                    data: {...newData}
+                });
             }
-        ]
-    });
+        })
+    ;
     return (
         <Button disabled={loading} onClick={returnBook}>
             Return

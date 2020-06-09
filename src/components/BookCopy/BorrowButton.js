@@ -16,7 +16,7 @@ const BORROW_BOOK_COPY_MUTATION = gql`
 
 
 
-export default function BorrowButton({availableBookCopy}) {
+export default function BorrowButton({ availableBookCopy }) {
     const toast = useToast();
     const [borrowBook, { loading }] = useMutation(BORROW_BOOK_COPY_MUTATION, {
         variables: { bookCopyId: availableBookCopy.id },
@@ -25,31 +25,33 @@ export default function BorrowButton({availableBookCopy}) {
                 title: "Success",
                 description: "You've borrowed the book",
                 status: "success",
-                duration: 1500,
+                duration: 1000,
                 position: "top",
-                isClosable: false
+                isClosable: true
             });
         },
         onError: error => {
             toast({
                 title: "Could not borrow the book",
-                // description: "Book already borrowed by someone else",
                 description: error.message,
-                    status: "error",
-                duration: 1500,
+                status: "error",
+                duration: 1000,
                 position: "top",
-                isClosable: false
+                isClosable: true
             });
         },
-        refetchQueries: ({ data }) => {
-                    console.log(data)
-
-            return [
-                {
-                    query: GET_USER_QUERY,
-                    variables: { userId: data.borrowBookCopy.borrower.id }
-                }
-            ];
+        update: (cache, { data: { borrowBookCopy } }) => {
+            const cachedData = cache.readQuery({
+                query: GET_USER_QUERY,
+                variables: { userId: borrowBookCopy.borrower.id }
+            });
+            const data = JSON.parse(JSON.stringify(cachedData));
+            data.user.borrowedBookCopies.push(borrowBookCopy);
+            cache.writeQuery({
+                query: GET_USER_QUERY,
+                variables: { userId: borrowBookCopy.borrower.id },
+                data
+            });
         }
     });
     return (
