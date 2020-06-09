@@ -1,11 +1,11 @@
 import React from "react";
 import { Stack } from "@chakra-ui/core";
-import BorrowButton from "./BorrowButton";
 import ReturnButton from "./ReturnButton";
+import BorrowButton from "./BorrowButton";
 
 export default function BookCopyActions({ bookCopy, ...remainingProps }) {
-    const canBeReturned = true || !!bookCopy.borrower;
-    const canBeBorrowed = true || !bookCopy.borrower;
+    const canBeReturned = !!bookCopy.borrower;
+    const canBeBorrowed = !bookCopy.borrower;
 
     return (
         <Stack {...remainingProps}>

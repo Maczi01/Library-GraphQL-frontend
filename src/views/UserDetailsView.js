@@ -8,23 +8,25 @@ import {BOOK_COPY_PARTS_FRAGMENT} from "../components/BookCopy/fragments";
 import Flex from "@chakra-ui/core/dist/Flex";
 import Heading from "@chakra-ui/core/dist/Heading";
 
-export default function UserDetailsPage() {
 
-    const GET_USER_QUERY = gql`
-        query GetUser($userId: ID!) {
-            user(id: $userId) {
-                ...userParts
-                borrowedBookCopies {
-                    ...bookCopyParts
-                }
-                ownedBookCopies{
-                    ...bookCopyParts
-                }
+export const GET_USER_QUERY = gql`
+    query GetUser($userId: ID!) {
+        user(id: $userId) {
+            ...userParts
+            borrowedBookCopies {
+                ...bookCopyParts
+            }
+            ownedBookCopies{
+                ...bookCopyParts
             }
         }
-        ${USER_DETAILS_PARTS_FRAGMENT}
-        ${BOOK_COPY_PARTS_FRAGMENT}
-    `;
+    }
+    ${USER_DETAILS_PARTS_FRAGMENT}
+    ${BOOK_COPY_PARTS_FRAGMENT}
+`;
+
+
+export default function UserDetailsPage() {
 
     const {userId} = useParams();
     const {loading, error, data} = useQuery(GET_USER_QUERY, {
@@ -48,6 +50,8 @@ export default function UserDetailsPage() {
                         key={bookCopy.id}
                         bookCopy={bookCopy}
                         showBorrower
+                        showActions
+
                     />
                 ))}
             </Flex>

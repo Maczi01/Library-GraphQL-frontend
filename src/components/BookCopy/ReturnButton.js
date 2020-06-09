@@ -2,6 +2,7 @@ import {Button, useToast} from "@chakra-ui/core";
 import React from "react";
 import {gql, useMutation} from "@apollo/client";
 import {BOOK_COPY_PARTS_FRAGMENT} from "./fragments";
+import {GET_USER_QUERY} from "../../views/UserDetailsView";
 
 
 const RETURN_BOOK_COPY_MUTATION = gql`
@@ -38,7 +39,13 @@ export default function ReturnButton({borrowedBookCopy}) {
                 position: "top",
                 isClosable: false
             });
-        }
+        },
+        refetchQueries: [
+            {
+                query: GET_USER_QUERY,
+                variables: { userId: borrowedBookCopy.borrower.id }
+            }
+        ]
     });
     return (
         <Button disabled={loading} onClick={returnBook}>
