@@ -35,13 +35,15 @@ export default function BorrowButton({availableBookCopy}) {
                 title: "Could not borrow the book",
                 // description: "Book already borrowed by someone else",
                 description: error.message,
-                status: "error",
+                    status: "error",
                 duration: 1500,
                 position: "top",
                 isClosable: false
             });
         },
         refetchQueries: ({ data }) => {
+                    console.log(data)
+
             return [
                 {
                     query: GET_USER_QUERY,

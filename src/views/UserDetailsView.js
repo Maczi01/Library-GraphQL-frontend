@@ -7,6 +7,7 @@ import BookCopy from "../components/BookCopy";
 import {BOOK_COPY_PARTS_FRAGMENT} from "../components/BookCopy/fragments";
 import Flex from "@chakra-ui/core/dist/Flex";
 import Heading from "@chakra-ui/core/dist/Heading";
+import BorrowRandomButton from "../components/BookCopy/BorrowRandomButton";
 
 
 export const GET_USER_QUERY = gql`
@@ -42,7 +43,7 @@ export default function UserDetailsPage() {
     return (
         <Box>
             <UserDetails user={user}/>
-
+            <BorrowRandomButton/>
             <Heading as="h3" size="lg" textAlign="center"> Owned books</Heading>
             <Flex wrap="wrap" width="60vw">
                 {user.ownedBookCopies.map(bookCopy => (
