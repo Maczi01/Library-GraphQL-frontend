@@ -40,30 +40,22 @@ export default function ReturnButton({borrowedBookCopy}) {
                     isClosable: false
                 });
             },
-            refetchQueries: [
-                {
+            update: (cache) => {
+                const cachedData = cache.readQuery({
                     query: GET_USER_QUERY,
-                    variables: { userId: borrowedBookCopy.borrower.id }
-                }
-            ],
-            // update: (cache, { data: { returnBookCopy } }) => {
-            // update: (cache, {data}) => {
-            //     const cachedData = cache.readQuery({
-            //         query: GET_USER_QUERY,
-            //         variables: {userId: borrowedBookCopy.borrower.id}
-            //     });
-            //     // console.log(borrowedBookCopy.borrower.id)
-            //     const newData = JSON.parse(JSON.stringify(cachedData));
-            //     // console.log(newData.user.borrowedBookCopies)
-            //     // console.log(newData.user.borrowedBookCopies.indexOf(borrowedBookCopy.id))
-            //     newData.user.borrowedBookCopies.filter(book => book.id !== data.borrowedBookCopy.id)
-            //     // console.log(newData)
-            //     cache.writeQuery({
-            //         query: GET_USER_QUERY,
-            //         variables: {userId: borrowedBookCopy.borrower.id},
-            //         data: {...newData}
-            //     });
-            // }
+                    variables: {userId: borrowedBookCopy.borrower.id}
+                });
+                const newData = JSON.parse(JSON.stringify(cachedData));
+                newData.user.borrowedBookCopies = newData.user.borrowedBookCopies.filter(bookCopy => {
+                    console.log(bookCopy.id, borrowedBookCopy.id, bookCopy.id !== borrowedBookCopy.id)
+                    return bookCopy.id !== borrowedBookCopy.id
+                });
+                cache.writeQuery({
+                    query: GET_USER_QUERY,
+                    variables: {userId: borrowedBookCopy.borrower.id},
+                    data: newData
+                });
+            }
         })
     ;
     return (
