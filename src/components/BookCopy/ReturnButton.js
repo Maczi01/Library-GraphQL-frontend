@@ -40,30 +40,30 @@ export default function ReturnButton({borrowedBookCopy}) {
                     isClosable: false
                 });
             },
-            // refetchQueries: [
-            //     {
-            //         query: GET_USER_QUERY,
-            //         variables: { userId: borrowedBookCopy.borrower.id }
-            //     }
-            // ],
+            refetchQueries: [
+                {
+                    query: GET_USER_QUERY,
+                    variables: { userId: borrowedBookCopy.borrower.id }
+                }
+            ],
             // update: (cache, { data: { returnBookCopy } }) => {
-            update: (cache, {data}) => {
-                const cachedData = cache.readQuery({
-                    query: GET_USER_QUERY,
-                    variables: {userId: borrowedBookCopy.borrower.id}
-                });
-                // console.log(borrowedBookCopy.borrower.id)
-                const newData = JSON.parse(JSON.stringify(cachedData));
-                // console.log(newData.user.borrowedBookCopies)
-                // console.log(newData.user.borrowedBookCopies.indexOf(borrowedBookCopy.id))
-                newData.user.borrowedBookCopies.filter(book => book.id !== data.borrowedBookCopy.id)
-                // console.log(newData)
-                cache.writeQuery({
-                    query: GET_USER_QUERY,
-                    variables: {userId: borrowedBookCopy.borrower.id},
-                    data: {...newData}
-                });
-            }
+            // update: (cache, {data}) => {
+            //     const cachedData = cache.readQuery({
+            //         query: GET_USER_QUERY,
+            //         variables: {userId: borrowedBookCopy.borrower.id}
+            //     });
+            //     // console.log(borrowedBookCopy.borrower.id)
+            //     const newData = JSON.parse(JSON.stringify(cachedData));
+            //     // console.log(newData.user.borrowedBookCopies)
+            //     // console.log(newData.user.borrowedBookCopies.indexOf(borrowedBookCopy.id))
+            //     newData.user.borrowedBookCopies.filter(book => book.id !== data.borrowedBookCopy.id)
+            //     // console.log(newData)
+            //     cache.writeQuery({
+            //         query: GET_USER_QUERY,
+            //         variables: {userId: borrowedBookCopy.borrower.id},
+            //         data: {...newData}
+            //     });
+            // }
         })
     ;
     return (

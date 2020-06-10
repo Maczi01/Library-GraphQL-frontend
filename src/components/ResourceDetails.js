@@ -3,12 +3,12 @@ import Book from "./Book";
 import {gql} from "@apollo/client";
 import BookDetails, {BOOK_DETAILS_PARTS_FRAGMENT} from "./BookDetails";
 import UserDetails, {USER_DETAILS_PARTS_FRAGMENT} from "./UserDetails";
-import {AUTHOR_DETAILS_PARTS_FRAGMENT} from "./AuthorDetails";
+import AuthorDetails, {AUTHOR_DETAILS_PARTS_FRAGMENT} from "./AuthorDetails";
 import BookCopy from "./BookCopy";
 import {BOOK_COPY_PARTS_FRAGMENT} from "./BookCopy/fragments";
 
-export const ANYTHING_DETAILS_FIELDS_FRAGMENT = gql`
-    fragment anythingDetailsFields on Anything {
+export const RESOURCE_DETAILS_FIELDS_FRAGMENT = gql`
+    fragment resourceDetailsFields on Resource {
         ...bookDetailsParts
         ...authorDetailsParts
         ...userParts
@@ -20,20 +20,20 @@ export const ANYTHING_DETAILS_FIELDS_FRAGMENT = gql`
     ${BOOK_COPY_PARTS_FRAGMENT}
 `;
 
-const AnythingDetails = ({anything}) => {
-    switch (anything.__typename) {
+const ResourceDetails = ({resource}) => {
+    switch (resource.__typename) {
         case "User":
-            return <UserDetails user={anything}/>;
+            return <UserDetails user={resource}/>;
         case "Book":
-            return <BookDetails book={anything}/>;
+            return <BookDetails book={resource}/>;
         case "BookCopy":
-            return <BookCopy bookCopy={anything} showBorrower showOwner/>;
+            return <BookCopy bookCopy={resource} showBorrower showOwner/>;
         case "Author":
-            return <BookCopy author={anything}/>
+            return <AuthorDetails author={resource}/>
         default: {
-            return <p>Unsupported __typename - [{anything.__typename}]</p>;
+            return <p>Unsupported __typename - [{resource.__typename}]</p>;
         }
     }
 }
 
-export default AnythingDetails;
+export default ResourceDetails;
