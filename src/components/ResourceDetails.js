@@ -7,7 +7,7 @@ import AuthorDetails, {AUTHOR_DETAILS_PARTS_FRAGMENT} from "./AuthorDetails";
 import BookCopy from "./BookCopy";
 import {BOOK_COPY_PARTS_FRAGMENT} from "./BookCopy/fragments";
 
-export const RESOURCE_DETAILS_FIELDS_FRAGMENT = gql`
+    export const RESOURCE_DETAILS_FIELDS_FRAGMENT = gql`
     fragment resourceDetailsFields on Resource {
         ...bookDetailsParts
         ...authorDetailsParts
