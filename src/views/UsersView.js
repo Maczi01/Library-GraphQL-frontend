@@ -7,6 +7,9 @@ import {USER_DETAILS_PARTS_FRAGMENT} from "../components/UserDetails";
 import SearchBox, {useSearchQuery} from "../components/SearchBox";
 import AdminActions from "../components/AdminActions";
 import ButtonLink from "../components/ButtonLink";
+import ResetDataButton from "../components/ResetDataButton";
+import Stack from "@chakra-ui/core/dist/Stack";
+import UserDeleteButton from "../components/UserDeleteButton";
 
 const ALL_USERS_QUERY = gql`
     query GetAllUsers($searchQuery: String!) {
@@ -39,15 +42,21 @@ const UsersView = () => {
             <SearchBox searchQuery={searchQuery}
                        onSearchQueryChange={handleSearchQueryChange}/>
             {anyUsers ? users.map(user => (
-                    <Link key={user.id} to={`/users/${user.id}`}>
+                <Stack key={user.id} >
+                    <Link to={`/users/${user.id}`}>
                         <User user={user}/>
                     </Link>
+                    <AdminActions direction="column">
+                        <ButtonLink to={`/users/${user.id}/edit`}> Edit user</ButtonLink>
+                        <UserDeleteButton userId={user.id}/>
+                    </AdminActions>
+                </Stack>
                 )) :
                 <p> No books found</p>
             }
             <AdminActions>
                 <ButtonLink to="/users/new"> Create new user</ButtonLink>
-                <ButtonLink to="/users/new"> Create new user</ButtonLink>
+                <ResetDataButton/>
             </AdminActions>
         </Flex>
     );
