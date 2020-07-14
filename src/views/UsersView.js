@@ -5,6 +5,8 @@ import User from "../components/User";
 import Link from "../components/Link";
 import {USER_DETAILS_PARTS_FRAGMENT} from "../components/UserDetails";
 import SearchBox, {useSearchQuery} from "../components/SearchBox";
+import AdminActions from "../components/AdminActions";
+import ButtonLink from "../components/ButtonLink";
 
 const ALL_USERS_QUERY = gql`
     query GetAllUsers($searchQuery: String!) {
@@ -43,6 +45,10 @@ const UsersView = () => {
                 )) :
                 <p> No books found</p>
             }
+            <AdminActions>
+                <ButtonLink to="/users/new"> Create new user</ButtonLink>
+                <ButtonLink to="/users/new"> Create new user</ButtonLink>
+            </AdminActions>
         </Flex>
     );
 };
