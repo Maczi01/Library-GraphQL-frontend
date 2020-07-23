@@ -27,7 +27,6 @@ const AuthorDetailsView = () => {
         return <CircularProgress isIndeterminate color="green" my="20%"></CircularProgress>;
     }
     const {author} = data
-    console.log(author.id)
     return (
         <Box>
             <AuthorDetails author={author}/>

@@ -15,6 +15,7 @@ import ResourcesView from "./views/ResourcesView";
 import EditUserView from "./views/EditUserView";
 import NewUserView from "./views/NewUserView";
 import EditAuthorView from "./views/EditAuthorView";
+import NewAuthorView from "./views/NewAuthorView";
 
 export default function App() {
     return (
@@ -49,6 +50,7 @@ export default function App() {
                     <Route path="authors/:authorId/edit" element={<EditAuthorView />} />
 
                     <Route path="users/new" element={<NewUserView />} />
+                    <Route path="authors/new" element={<NewAuthorView />} />
 
                 </Routes>
             </Flex>

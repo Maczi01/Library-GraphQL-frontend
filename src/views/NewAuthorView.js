@@ -2,13 +2,14 @@ import React from "react";
 import UserCreateForm from "../components/UserCreateForm";
 import {useToast} from "../components/Toast";
 import {useNavigate} from "react-router";
+import AuthorCreateForm from "../components/AuthorCreateForm";
 
 export default function NewAuthorView() {
     const toast = useToast();
     const navigate = useNavigate();
-    return <UserCreateForm onCreate={() => {
+    return <AuthorCreateForm onCreate={() => {
         toast({status: "warning", description: "Not implemented!"})
-    }} onCancel={() => navigate("/users")}
+    }} onCancel={() => navigate("/authors")}
                            isCreating={false}/>
 }
 
