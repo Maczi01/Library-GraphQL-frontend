@@ -30,6 +30,6 @@ export default function EditAuthorView() {
         author={author}
         onUpdate={() => {
             toast({status: "warning", description: "Not implemented!"})
-        }} onCancel={() => navigate(`/users/${user.id}`)}
+        }} onCancel={() => navigate(`/authors/${author.id}`)}
         isUpdating={false}/>
 }
