@@ -5,6 +5,12 @@ import {CircularProgress, Flex} from '@chakra-ui/core'
 import Link from "../components/Link";
 import {AUTHOR_DETAILS_PARTS_FRAGMENT} from "../components/AuthorDetails";
 import SearchBox, {useSearchQuery} from "../components/SearchBox";
+import AdminActions from "../components/AdminActions";
+import ButtonLink from "../components/ButtonLink";
+import UserDeleteButton from "../components/UserDeleteButton";
+import Stack from "@chakra-ui/core/dist/Stack";
+import AuthorDeleteButton from "../components/AuthorDeleteButton";
+import ResetDataButton from "../components/ResetDataButton";
 
 const ALL_AUTHORS_QUERY = gql`
     query GetAllAuthors($searchQuery: String) {
@@ -30,16 +36,29 @@ const AuthorsView = () => {
     }
     const {authors} = data;
 
-    return (<>
+    return (
+        <>
             <SearchBox
                 searchQuery={searchQuery}
                 onSearchQueryChange={handleSearchQueryChange}/>
             <Flex wrap="wrap" justify="space-around" my="20px" width="75%">
+
                 {authors.map(author =>
-                    <Link key={author.id} to={`/authors/${author.id}`}>
-                        <Author author={author}/>
-                    </Link>
+                    <Stack key={author.id}>
+                        <Link to={`/authors/${author.id}`}>
+                            <Author author={author}/>
+                        </Link>
+                        <AdminActions direction="column">
+                            <ButtonLink to={`/authors/${author.id}/edit`}> Edit author</ButtonLink>
+                            <AuthorDeleteButton authorId={author.id}/>
+                        </AdminActions>
+                    </Stack>
                 )}
+
+                <AdminActions>
+                    <ButtonLink to="/authors/new"> Create new author</ButtonLink>
+                    <ResetDataButton/>
+                </AdminActions>
             </Flex>
         </>
     )
