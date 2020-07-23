@@ -4,7 +4,7 @@ import {gql, useQuery} from "@apollo/client";
 import AuthorDetails, {AUTHOR_DETAILS_PARTS_FRAGMENT} from "../components/AuthorDetails";
 import {useParams} from "react-router";
 
-const GET_AUTHOR_QUERY = gql`
+export const GET_AUTHOR_QUERY = gql`
     query GetBook($authorId: ID!) {
         author(id: $authorId) {
             ...authorDetailsParts

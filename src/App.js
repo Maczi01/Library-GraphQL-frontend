@@ -14,6 +14,7 @@ import AuthorDetailsView from "./views/AuthorDetailsView";
 import ResourcesView from "./views/ResourcesView";
 import EditUserView from "./views/EditUserView";
 import NewUserView from "./views/NewUserView";
+import EditAuthorView from "./views/EditAuthorView";
 
 export default function App() {
     return (
@@ -45,6 +46,7 @@ export default function App() {
 
                     <Route path="admin/resources" element={<ResourcesView/>}/>
                     <Route path="users/:userId/edit" element={<EditUserView />} />
+                    <Route path="authors/:authorId/edit" element={<EditAuthorView />} />
 
                     <Route path="users/new" element={<NewUserView />} />
 
