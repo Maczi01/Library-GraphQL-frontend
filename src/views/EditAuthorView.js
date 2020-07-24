@@ -7,13 +7,14 @@ import UserCreateForm from "../components/UserCreateForm";
 import {useToast} from "../components/Toast";
 import UserUpdateForm from "../components/UserUpdateForm";
 import {GET_AUTHOR_QUERY} from "./AuthorDetailsView";
+import AuthorUpdateForm from "../components/AuthorUpdateForm";
 
 export default function EditAuthorView() {
     const toast = useToast();
     const navigate = useNavigate();
-    const {$authorId} = useParams();
+    const {authorId} = useParams();
     const {loading, error, data} = useQuery(GET_AUTHOR_QUERY, {
-        variables: {$authorId}
+        variables: {authorId}
     });
     if (loading) {
         return <CircularProgress isIndeterminate color="green" my="20%"></CircularProgress>;
@@ -26,7 +27,7 @@ export default function EditAuthorView() {
         return <p>author not found</p>
     }
 
-    return <UserUpdateForm
+    return <AuthorUpdateForm
         author={author}
         onUpdate={() => {
             toast({status: "warning", description: "Not implemented!"})

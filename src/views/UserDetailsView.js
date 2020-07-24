@@ -46,7 +46,7 @@ export default function UserDetailsPage() {
     }
     const {user} = data;
     if(!user){
-        return <p>User not found</p>
+        return <p>User not found</  p>
     }
 
     return (

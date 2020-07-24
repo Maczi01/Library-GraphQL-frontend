@@ -3,6 +3,11 @@ import {Box, CircularProgress} from "@chakra-ui/core";
 import {gql, useQuery} from "@apollo/client";
 import AuthorDetails, {AUTHOR_DETAILS_PARTS_FRAGMENT} from "../components/AuthorDetails";
 import {useParams} from "react-router";
+import AdminActions from "../components/AdminActions";
+import ButtonLink from "../components/ButtonLink";
+import UserDeleteButton from "../components/UserDeleteButton";
+import ResetDataButton from "../components/ResetDataButton";
+import AuthorDeleteButton from "../components/AuthorDeleteButton";
 
 export const GET_AUTHOR_QUERY = gql`
     query GetBook($authorId: ID!) {
@@ -30,6 +35,12 @@ const AuthorDetailsView = () => {
     return (
         <Box>
             <AuthorDetails author={author}/>
+            <AdminActions direction="column">
+                <ButtonLink to={`/authors/${author.id}/edit`}> Edit author</ButtonLink>
+                <AuthorDeleteButton
+                    authorId={author.id}/>
+                <ResetDataButton/>
+            </AdminActions>
         </Box>
     );
 }
