@@ -33,56 +33,63 @@ export const GET_USER_QUERY = gql`
 
 
 export default function UserDetailsPage() {
-
-    const {userId} = useParams();
-    const {loading, error, data} = useQuery(GET_USER_QUERY, {
-        variables: {userId}
+    const { userId } = useParams();
+    const { loading, error, data } = useQuery(GET_USER_QUERY, {
+        variables: { userId }
     });
+
     if (loading) {
-        return <CircularProgress isIndeterminate color="green" my="20%"></CircularProgress>;
+        return <p>Loading...</p>;
     }
     if (error) {
-        return <p>Could not load user"</p>;
+        return <p>Could not load user...</p>;
     }
-    const {user} = data;
-    if(!user){
-        return <p>User not found</  p>
+    const { user } = data;
+    if (!user) {
+        return <p>User not found</p>;
     }
-
     return (
-        <Box>
-            <UserDetails user={user}/>
-            <BorrowRandomButton/>
-            <Heading as="h3" size="lg" textAlign="center"> Owned books</Heading>
-            <Flex wrap="wrap" width="60vw">
-                {user.ownedBookCopies.map(bookCopy => (
-                    <BookCopy
-                        key={bookCopy.id}
-                        bookCopy={bookCopy}
-                        showBorrower
-                        showActions
-
-                    />
-                ))}
-            </Flex>
-            <AdminActions direction="column">
-                <ButtonLink to={`/users/${user.id}/edit`}> Edit user</ButtonLink>
-                <UserDeleteButton userId={user.id}/>
-                <ResetDataButton/>
+        <Stack>
+            <UserDetails user={user} />
+            <AdminActions>
+                <ButtonLink to={`/users/${userId}/edit`}>Edit user</ButtonLink>
+                <UserDeleteButton userId={user.id} />
+                <ResetDataButton />
             </AdminActions>
-            <Heading as="h3" size="lg" textAlign="center"> Borrowed books </Heading>
-            <Flex wrap="wrap" width="60vw">
-                {user.borrowedBookCopies.map(bookCopy => (
-                    <BookCopy
-                        key={bookCopy.id}
-                        bookCopy={bookCopy}
-                        showOwner
-                        showActions
-                    />
-                ))}
-            </Flex>
-
-        </Box>
+            {user.ownedBookCopies.length > 0 && (
+                <>
+                    <Heading as="h3" size="lg" textAlign="center">
+                        Owned books
+                    </Heading>
+                    <Flex wrap="wrap">
+                        {user.ownedBookCopies.map(bookCopy => (
+                            <BookCopy
+                                key={bookCopy.id}
+                                bookCopy={bookCopy}
+                                showBorrower
+                                showActions
+                            />
+                        ))}
+                    </Flex>
+                </>
+            )}
+            {user.borrowedBookCopies.length > 0 && (
+                <>
+                    <Heading as="h3" size="lg" textAlign="center">
+                        Borrowed books
+                    </Heading>
+                    <Flex wrap="wrap">
+                        {user.borrowedBookCopies.map(bookCopy => (
+                            <BookCopy
+                                key={bookCopy.id}
+                                bookCopy={bookCopy}
+                                showOwner
+                                showActions
+                            />
+                        ))}
+                    </Flex>
+                </>
+            )}
+        </Stack>
     );
 }
-
