@@ -36,7 +36,7 @@ const AuthorDetailsView = () => {
         <Box>
             <AuthorDetails author={author}/>
             <AdminActions direction="column">
-                <ButtonLink to={`/authors/${author.id}/edit`}> Edit author</ButtonLink>
+                <ButtonLink to={`/authors/${author.id}/edit`}>Edit author</ButtonLink>
                 <AuthorDeleteButton
                     authorId={author.id}/>
                 <ResetDataButton/>
