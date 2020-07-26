@@ -11,7 +11,7 @@ import ResetDataButton from "../components/ResetDataButton";
 import Stack from "@chakra-ui/core/dist/Stack";
 import UserDeleteButton from "../components/UserDeleteButton";
 
-const ALL_USERS_QUERY = gql`
+export const ALL_USERS_QUERY = gql`
     query GetAllUsers($searchQuery: String!) {
         users(searchQuery: $searchQuery) {
             ...userParts

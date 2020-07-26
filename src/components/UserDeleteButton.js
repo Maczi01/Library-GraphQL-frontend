@@ -4,6 +4,7 @@ import {useToast} from "./Toast";
 import {gql, useMutation} from "@apollo/client";
 import ALL_USERS_QUERY from '../views/UsersView'
 import {GET_USER_QUERY} from "../views/UserDetailsView";
+import {USER_DETAILS_PARTS_FRAGMENT} from "./UserDetails";
 
 const DELETE_USER_MUTATION = gql`
     mutation DeleteUser($userId: ID!){
@@ -16,51 +17,52 @@ const DELETE_USER_MUTATION = gql`
 `
 export default function UserDeleteButton({userId, ...remainingProps}) {
     const toast = useToast();
-    const [deleteUser, {loading}] = useMutation(DELETE_USER_MUTATION, {
-        onCompleted: ({deleteUser: {success, message}}) => {
+    const [deleteUser, { loading }] = useMutation(DELETE_USER_MUTATION, {
+        variables: { userId },
+        onCompleted: ({ deleteUser: { success, message, id } }) => {
             toast({
                 description: message,
                 status: success ? "success" : "error"
             });
         },
-        update: (cache) => {
-            const cachedData = cache.readQuery(
-                {
-                    query: ALL_USERS_QUERY,
-                    variables: {
-                        searchQuery: ""
+        update: cache => {
+            const cachedData = cache.readQuery({
+                query: gql`
+                    query GetAllUsers($searchQuery: String!) {
+                        users(searchQuery: $searchQuery) {
+                            ...userParts
+                        }
                     }
-                }
-            );
-            cache.writeQuery(
-                {
-                    query: ALL_USERS_QUERY,
-                    variables: {
-                        searchQuery: ""
-                    },
-                    data: {
-                       users:  cachedData.users.filter(user => user.id !== userId)
+                    ${USER_DETAILS_PARTS_FRAGMENT}
+                `,
+                variables: { searchQuery: "" }
+            });
+            cache.writeQuery({
+                query: gql`
+                    query GetAllUsers($searchQuery: String!) {
+                        users(searchQuery: $searchQuery) {
+                            ...userParts
+                        }
                     }
+                    ${USER_DETAILS_PARTS_FRAGMENT}
+                `,
+                variables: { searchQuery: "" },
+                data: {
+                    users: cachedData.users.filter(user => user.id !== userId)
                 }
-            );
-            cache.writeQuery(
-                {
-                    query: GET_USER_QUERY,
-                    variables: {
-                        userId
-                    },
-                    data: {
-                        user:  null
-                    }
+            });
+            cache.writeQuery({
+                query: GET_USER_QUERY,
+                variables: { userId },
+                data: {
+                    user: null
                 }
-            )
+            });
         }
     });
     return (
         <Button onClick={() =>
-            deleteUser({
-                variables: {userId}
-            })
+            deleteUser()
         } isLoading={loading} {...remainingProps}
         >
             Delete user!
