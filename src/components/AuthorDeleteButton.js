@@ -9,7 +9,7 @@ import {GET_AUTHOR_QUERY} from "../views/AuthorDetailsView";
 
 const DELETE_AUTHOR_MUTATION = gql`
     mutation DeleteAuthor($authorId: ID!){
-        deleteUser(id: $authorId){
+        deleteAuthor(id: $authorId){
             success
             message
             id
@@ -57,7 +57,7 @@ export default function AuthorDeleteButton({authorId, ...remainingProps}) {
                 query: GET_AUTHOR_QUERY,
                 variables: { authorId },
                 data: {
-                    user: null
+                    author: null
                 }
             });
         }
