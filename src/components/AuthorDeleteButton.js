@@ -17,47 +17,50 @@ const DELETE_AUTHOR_MUTATION = gql`
 
 export default function AuthorDeleteButton({authorId, ...remainingProps}) {
     const toast = useToast();
-    const [deleteAuthor, { loading }] = useMutation(DELETE_AUTHOR_MUTATION, {
-        variables: { authorId },
-        onCompleted: ({ deleteAuthor: { success, message, id } }) => {
+    const [deleteAuthor, {loading}] = useMutation(DELETE_AUTHOR_MUTATION, {
+        variables: {authorId},
+        onCompleted: ({deleteAuthor: {success, message, id}}) => {
             toast({
                 description: message,
                 status: success ? "success" : "error"
             });
         },
         update: cache => {
-            const cachedData = cache.readQuery({
-                query: gql`
-                    query GetAllAuthors($searchQuery: String) {
-                        authors(searchQuery: $searchQuery) {
-                            ...authorDetailsParts
+            try {
+                const cachedData = cache.readQuery({
+                    query: gql`
+                        query GetAllAuthors($searchQuery: String) {
+                            authors(searchQuery: $searchQuery) {
+                                ...authorDetailsParts
+                            }
                         }
-                    }
-                    ${AUTHOR_DETAILS_PARTS_FRAGMENT}
-                `,
-                variables: { searchQuery: "" }
-            });
-            cache.writeQuery({
-                query: gql`
-                    query GetAllAuthors($searchQuery: String) {
-                        authors(searchQuery: $searchQuery) {
-                            ...authorDetailsParts
+                        ${AUTHOR_DETAILS_PARTS_FRAGMENT}
+                    `,
+                    variables: {searchQuery: ""}
+                });
+                cache.writeQuery({
+                    query: gql`
+                        query GetAllAuthors($searchQuery: String) {
+                            authors(searchQuery: $searchQuery) {
+                                ...authorDetailsParts
+                            }
                         }
+                        ${AUTHOR_DETAILS_PARTS_FRAGMENT}
+                    `,
+                    variables: {searchQuery: ""},
+                    data: {
+                        authors: cachedData.authors.filter(author => author.id !== authorId)
                     }
-                    ${AUTHOR_DETAILS_PARTS_FRAGMENT}
-                `,
-                variables: { searchQuery: "" },
-                data: {
-                    authors: cachedData.authors.filter(author => author.id !== authorId)
-                }
-            });
-            cache.writeQuery({
-                query: GET_AUTHOR_QUERY,
-                variables: { authorId },
-                data: {
-                    author: null
-                }
-            });
+                });
+                cache.writeQuery({
+                    query: GET_AUTHOR_QUERY,
+                    variables: {authorId},
+                    data: {
+                        author: null
+                    }
+                });
+            } catch (e) {
+            }
         }
     });
     return (

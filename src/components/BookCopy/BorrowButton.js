@@ -41,6 +41,7 @@ export default function BorrowButton({ availableBookCopy }) {
             });
         },
         update: (cache, { data: { borrowBookCopy } }) => {
+        try{
             const cachedData = cache.readQuery({
                 query: GET_USER_QUERY,
                 variables: { userId: borrowBookCopy.borrower.id }
@@ -52,6 +53,7 @@ export default function BorrowButton({ availableBookCopy }) {
                 variables: { userId: borrowBookCopy.borrower.id },
                 data
             });
+        } catch (error){}
         }
     });
     return (
