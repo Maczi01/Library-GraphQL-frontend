@@ -1,5 +1,4 @@
 import React from "react";
-import {Box, CircularProgress} from "@chakra-ui/core";
 import {gql, useQuery} from "@apollo/client";
 import UserDetails, {USER_DETAILS_PARTS_FRAGMENT} from "../components/UserDetails";
 import {useParams} from "react-router";
@@ -7,7 +6,6 @@ import BookCopy from "../components/BookCopy";
 import {BOOK_COPY_PARTS_FRAGMENT} from "../components/BookCopy/fragments";
 import Flex from "@chakra-ui/core/dist/Flex";
 import Heading from "@chakra-ui/core/dist/Heading";
-import BorrowRandomButton from "../components/BookCopy/BorrowRandomButton";
 import AdminActions from "../components/AdminActions";
 import ButtonLink from "../components/ButtonLink";
 import UserDeleteButton from "../components/UserDeleteButton";
