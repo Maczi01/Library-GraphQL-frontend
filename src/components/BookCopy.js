@@ -2,7 +2,6 @@ import React from "react";
 import {AspectRatioBox, Box, Image} from "@chakra-ui/core";
 import Avatar from "./Avatar";
 import Link from "./Link";
-// import BookCopyActions from "./BookCopy/BookCopyActions";
 import BookCopyActions from "./BookCopy/BookCopyActions";
 
 export default function BookCopy({

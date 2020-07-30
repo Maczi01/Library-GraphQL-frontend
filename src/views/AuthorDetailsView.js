@@ -5,7 +5,6 @@ import AuthorDetails, {AUTHOR_DETAILS_PARTS_FRAGMENT} from "../components/Author
 import {useParams} from "react-router";
 import AdminActions from "../components/AdminActions";
 import ButtonLink from "../components/ButtonLink";
-import UserDeleteButton from "../components/UserDeleteButton";
 import ResetDataButton from "../components/ResetDataButton";
 import AuthorDeleteButton from "../components/AuthorDeleteButton";
 

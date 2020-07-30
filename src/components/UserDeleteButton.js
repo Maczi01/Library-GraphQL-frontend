@@ -2,7 +2,6 @@ import React from 'react'
 import {Button} from "@chakra-ui/core";
 import {useToast} from "./Toast";
 import {gql, useMutation} from "@apollo/client";
-import ALL_USERS_QUERY from '../views/UsersView'
 import {GET_USER_QUERY} from "../views/UserDetailsView";
 import {USER_DETAILS_PARTS_FRAGMENT} from "./UserDetails";
 
