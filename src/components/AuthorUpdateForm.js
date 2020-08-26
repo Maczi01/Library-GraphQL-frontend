@@ -50,7 +50,7 @@ export default function AuthorUpdateForm({
             <ButtonGroup mt="3">
                 <Button
                     isLoading={isUpdating}
-                    loadingText="Updating User..."
+                    loadingText="Updating User... wait"
                     type="submit"
                     variantColor="green"
                 >
