@@ -56,7 +56,7 @@ export default function AuthorUpdateForm({
                 >
                     Update Author
                 </Button>
-                <Button onClick={onCancel}>Cancel editing</Button>
+                <Button onClick={onCancel}>Cancel edit</Button>
             </ButtonGroup>
         </Box>
     );
