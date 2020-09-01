@@ -43,7 +43,7 @@ export default function AuthorUpdateForm({
                 <Textarea
                     ref={bioRef}
                     id="info"
-                    placeholder="Here is a sample placeholder to input data"
+                    placeholder="Here is a sample placeholder to input"
                     defaultValue={author.info}
                 />
             </FormControl>
