@@ -23,7 +23,7 @@ const Header = () => (
             </Button>
             <Divider orientation="vertical"/>
             <Button to="/users" as={RouterLink} color="black" variantColor="#3da9fc" variant="solid">
-                <Box as="span">Users</Box>
+                <Box as="span">Users.</Box>
             </Button>
             <Divider orientation="vertical"/>
             <Button to="/random" as={RouterLink} color="black" variantColor="#3da9fc" variant="solid">
