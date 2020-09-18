@@ -22,7 +22,7 @@ const Header = () => (
                 <Box as="span">Authors</Box>
             </Button>
             <Divider orientation="vertical"/>
-            <Button to="/users" as={RouterLink} color="gray" variantColor="#3da9fc" variant="solid">
+            <Button to="/users" as={RouterLink} color="black" variantColor="#3da9fc" variant="solid">
                 <Box as="span">Users.</Box>
             </Button>
             <Divider orientation="vertical"/>
