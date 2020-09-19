@@ -13,7 +13,7 @@ const Header = () => (
             <Link to="/" as={RouterLink}>
                 <Flex size="50px">
                     <Image src={icon} alt="logo" m="5px"/>
-                    <Heading as="h1" color="#000000">Library</Heading>
+                    <Heading as="h1" color="#000000">Library!</Heading>
                 </Flex>
             </Link>
         </Box>
