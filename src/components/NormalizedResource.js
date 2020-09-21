@@ -1,5 +1,5 @@
 import React from "react";
-import {Stack, Image, Heading, Box} from "@chakra-ui/core";
+import {Stack, Image, Flex, Heading, Box} from "@chakra-ui/core";
 import {gql} from "@apollo/client";
 
 export const normalizedResource = resource => ({
